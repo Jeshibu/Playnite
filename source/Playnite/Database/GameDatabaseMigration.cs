@@ -503,6 +503,7 @@ namespace Playnite.Database
 
                         case "emulators":
                             EmulatorsCollection.MapLiteDbEntities(mapper);
+                            var emulatorDefinitions = EmulatorDefinition.Definitions;
                             convertList<Ver2_Emulator, Emulator>(dir, (oldEmu, newEmu) =>
                             {
                                 if (!oldEmu.Profiles.HasItems())
@@ -523,6 +524,18 @@ namespace Playnite.Database
                                         Arguments = oldProfile.Arguments,
                                         WorkingDirectory = oldProfile.WorkingDirectory
                                     });
+
+                                    var executableFilename = Path.GetFileName(oldProfile.Executable);
+                                    if (string.IsNullOrWhiteSpace(executableFilename))
+                                    {
+                                        continue;
+                                    }
+
+                                    var emulatorDefinition = emulatorDefinitions.FirstOrDefault(e => e.Profiles.Any(p => Regex.IsMatch(executableFilename, p.StartupExecutable)));
+                                    if (emulatorDefinition != null)
+                                    {
+                                        newEmu.BuiltInConfigId = emulatorDefinition.Id;
+                                    }
                                 }
 
                                 if (!newEmu.CustomProfiles[0].WorkingDirectory.IsNullOrEmpty())
