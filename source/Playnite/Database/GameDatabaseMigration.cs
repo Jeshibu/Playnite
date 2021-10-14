@@ -514,6 +514,14 @@ namespace Playnite.Database
                                 newEmu.CustomProfiles = new ObservableCollection<CustomEmulatorProfile>();
                                 foreach (var oldProfile in oldEmu.Profiles)
                                 {
+                                    var executableFilename = Path.GetFileName(oldProfile.Executable);
+                                    (var emulatorDefinition, _) = GetBuiltInEmulatorProfile(executableFilename, emulatorDefinitions);
+
+                                    if (emulatorDefinition != null)
+                                    {
+                                        newEmu.BuiltInConfigId = emulatorDefinition.Id;
+                                    }
+
                                     newEmu.CustomProfiles.Add(new CustomEmulatorProfile
                                     {
                                         Id = CustomEmulatorProfile.ProfilePrefix + oldProfile.Id,
@@ -524,18 +532,6 @@ namespace Playnite.Database
                                         Arguments = oldProfile.Arguments,
                                         WorkingDirectory = oldProfile.WorkingDirectory
                                     });
-
-                                    var executableFilename = Path.GetFileName(oldProfile.Executable);
-                                    if (string.IsNullOrWhiteSpace(executableFilename))
-                                    {
-                                        continue;
-                                    }
-
-                                    var emulatorDefinition = emulatorDefinitions.FirstOrDefault(e => e.Profiles.Any(p => Regex.IsMatch(executableFilename, p.StartupExecutable)));
-                                    if (emulatorDefinition != null)
-                                    {
-                                        newEmu.BuiltInConfigId = emulatorDefinition.Id;
-                                    }
                                 }
 
                                 if (!newEmu.CustomProfiles[0].WorkingDirectory.IsNullOrEmpty())
@@ -624,6 +620,26 @@ namespace Playnite.Database
                 dbSettings.Version = 3;
                 SaveSettingsToDbPath(dbSettings, databasePath);
             }
+        }
+
+        private static (EmulatorDefinition, EmulatorDefinitionProfile) GetBuiltInEmulatorProfile(string executableFilename, IEnumerable<EmulatorDefinition> emulatorDefinitions)
+        {
+            if (string.IsNullOrWhiteSpace(executableFilename))
+            {
+                return (null, null);
+            }
+
+            foreach (var e in emulatorDefinitions)
+            {
+                foreach (var p in e.Profiles)
+                {
+                    if (Regex.IsMatch(executableFilename, p.StartupExecutable))
+                    {
+                        return (e, p);
+                    }
+                }
+            }
+            return (null, null);
         }
 
         public static bool GetMigrationRequired(string databasePath)
