@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                    xmlns:c="clr-namespace:Playnite.DesktopApp.Controls"
                     mc:Ignorable="d">
 
     <Style TargetType="{x:Type Library}">
@@ -26,10 +27,14 @@
                         <TopPanel DockPanel.Dock="Top" Grid.Row="0" />
                         
                         <DockPanel Grid.Row="1">
+                            <FilterPanel2 DockPanel.Dock="{Settings FilterPanelPosition}"
+                                         Width="{Settings FilterPanelWitdh}"
+                                         Visibility="{Settings FilterPanelVisible}"/>
+                            
                             <FilterPanel x:Name="PART_FilterPanel"
                                          DockPanel.Dock="{Settings FilterPanelPosition}"
                                          Width="{Settings FilterPanelWitdh}"
-                                         Visibility="{Settings FilterPanelVisible}"/>
+                                         Visibility="Collapsed"/>
 
                             <ExplorerPanel Visibility="{Settings ExplorerPanelVisible}"
                                            DockPanel.Dock="{Settings ExplorerPanelPosition}"

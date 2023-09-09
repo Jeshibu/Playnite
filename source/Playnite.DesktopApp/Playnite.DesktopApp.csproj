@@ -169,6 +169,15 @@
     </Compile>
     <Compile Include="Controls\ComboBoxList.cs" />
     <Compile Include="Controls\ExpanderEx.cs" />
+    <Compile Include="Controls\Filtering\FilterPanel2.xaml.cs">
+      <DependentUpon>FilterPanel2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Filtering\MultipleValueGameFilterControl.xaml.cs">
+      <DependentUpon>MultipleValueGameFilterControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Filtering\StringGameFilterControl.xaml.cs">
+      <DependentUpon>StringGameFilterControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Menus\FilterPresetsMenu.cs" />
     <Compile Include="Controls\ComboBoxListBase.cs" />
     <Compile Include="Controls\Menus\GameGroupMenu.cs" />
@@ -599,6 +608,18 @@
     <Page Include="ControlGalleryView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Filtering\FilterPanel2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Filtering\MultipleValueGameFilterControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Filtering\StringGameFilterControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\GamesGridView.xaml">
       <Generator>MSBuild:Compile</Generator>

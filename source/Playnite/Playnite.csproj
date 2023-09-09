@@ -265,6 +265,13 @@
     <Compile Include="Database\GameDatabase_Filters.cs" />
     <Compile Include="DateTimes.cs" />
     <Compile Include="Extensions\Markup\PluginConverter.cs" />
+    <Compile Include="Filtering\AggregateGameFilter.cs" />
+    <Compile Include="Filtering\GameFieldFilter.cs" />
+    <Compile Include="Filtering\GameFieldFilterFactory.cs" />
+    <Compile Include="Filtering\IGameFilter.cs" />
+    <Compile Include="Filtering\MultipleValueCollectionGameFieldFilter.cs" />
+    <Compile Include="Filtering\SingleValueCollectionGameFieldFilter.cs" />
+    <Compile Include="Filtering\StringGameFieldFilter.cs" />
     <Compile Include="HdrUtilities.cs" />
     <Compile Include="ItemSelector.cs" />
     <Compile Include="MenuItems.cs" />
