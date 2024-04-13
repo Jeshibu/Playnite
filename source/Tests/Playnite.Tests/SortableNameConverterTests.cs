@@ -1,9 +1,4 @@
 ﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Playnite.Tests
 {
@@ -48,6 +43,7 @@ namespace Playnite.Tests
         [TestCase("the Witcher 3", "Witcher 03")]
         [TestCase("A Game", "Game")]
         [TestCase("An Usual Game", "Usual Game")]
+        [TestCase("House Of 1000 Doors 4: Evil Inside", "House Of 1000 Doors 04: Evil Inside")]
         public void ConvertToSortableNameTest(string input, string expected)
         {
             var c = new SortableNameConverter(new PlayniteSettings().GameSortingNameRemovedArticles);

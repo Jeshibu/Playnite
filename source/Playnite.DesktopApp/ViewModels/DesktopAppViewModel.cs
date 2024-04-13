@@ -6,34 +6,22 @@ using Playnite.Plugins;
 using Playnite.SDK;
 using Playnite.SDK.Models;
 using Playnite.SDK.Plugins;
-using Playnite.Settings;
 using Playnite.Commands;
 using Playnite.Windows;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
-using System.Windows.Input;
 using Playnite.ViewModels;
 using Playnite.DesktopApp.Windows;
 using System.Windows.Controls;
-using Playnite.SDK.Exceptions;
-using Playnite.Common.Media.Icons;
-using Playnite.DesktopApp.Markup;
-using System.Windows.Media.Imaging;
-using System.Windows.Media;
 using System.Drawing.Imaging;
-using Playnite.DesktopApp.Controls;
-using System.Diagnostics;
 using Playnite.SDK.Events;
-using Playnite.Emulators;
 
 namespace Playnite.DesktopApp.ViewModels
 {

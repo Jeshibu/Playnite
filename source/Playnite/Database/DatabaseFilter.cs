@@ -223,7 +223,7 @@ namespace Playnite.Database
             Libraries = new SelectableLibraryPluginList(libs);
 
             // Remove filters for unloaded plugins
-            var missing = filter.Library?.Ids.Where(a => Libraries.FirstOrDefault(b => b.Item.Id == a) == null)?.ToList();
+            var missing = filter.Library?.Ids.Where(a => !Libraries.Any(b => b.Item.Id == a))?.ToList();
             if (missing?.Any() == true)
             {
                 if (filter.Library != null)
