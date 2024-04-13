@@ -7,9 +7,19 @@ namespace Playnite.Filtering
 {
     public class StringGameFieldFilter : GameFieldFilter<string>
     {
-        public string SearchText { get; set; }
+        private string searchText;
 
-        public StringGameFieldFilter(GameFilterField field, Func<Game, string> valueSelector) :base(field, valueSelector)
+        public string SearchText
+        {
+            get => searchText;
+            set
+            {
+                searchText = value;
+                CallChanged();
+            }
+        }
+
+        public StringGameFieldFilter(GameFilterField field, Func<Game, string> valueSelector) : base(field, valueSelector)
         {
         }
 

@@ -7,20 +7,20 @@ namespace Playnite.Filtering
 {
     public class SingleValueCollectionGameFieldFilter : CollectionGameFieldFilter<Guid>
     {
-        public SingleValueCollectionGameFieldFilter(GameFilterField field, IEnumerable<FilterEntity> entities, Func<Game, Guid> valueSelector)
-            : base(field, entities, valueSelector)
+        public SingleValueCollectionGameFieldFilter(GameFilterField field, SelectableIdItemList items, Func<Game, Guid> valueSelector)
+            : base(field, items, valueSelector)
         {
         }
 
         protected override bool? MatchPositive(Game game)
         {
-            var checkedEntities = Entities.Where(e => e.Checked).ToList();
+            var checkedEntities = Items.GetSelectedIds();
             if (checkedEntities.Count == 0)
                 return null;
 
             var value = ValueSelector(game);
 
-            return Entities.Any(e => e.Checked && e.Id == value);
+            return checkedEntities.Contains(value);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Playnite.SDK.Models;
+using System;
 
 namespace Playnite.Filtering
 {
@@ -7,6 +8,7 @@ namespace Playnite.Filtering
         bool Positive { get; set; }
         bool Pinned { get; set; }
         bool Match(Game game);
+        event EventHandler FilterChanged;
     }
 
     public enum CollectionFilterMode

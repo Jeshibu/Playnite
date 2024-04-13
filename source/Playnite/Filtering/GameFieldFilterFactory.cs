@@ -18,6 +18,7 @@ namespace Playnite.Filtering
 
         public IGameFilter GetFilter(GameFilterField field)
         {
+            var db = PlayniteAPI.Database;
             switch (field)
             {
                 case GameFilterField.Name:
@@ -26,34 +27,33 @@ namespace Playnite.Filtering
                     return new StringGameFieldFilter(field, g => g.Version);
 
                 case GameFilterField.Library:
-                    var plugins = PlayniteAPI.Addons.Plugins.Where(p => p is LibraryPlugin).Cast<LibraryPlugin>().Select(FilterEntity.Create);
-                    return new SingleValueCollectionGameFieldFilter(field, plugins, g => g.PluginId);
+                    var plugins = PlayniteAPI.Addons.Plugins.OfType<LibraryPlugin>().Select(FilterEntity.Create);
+                    return new SingleValueCollectionGameFieldFilter(field, GetItems(PlayniteAPI.Addons), g => g.PluginId);
                 case GameFilterField.CompletionStatus:
-                    return new SingleValueCollectionGameFieldFilter(field, PlayniteAPI.Database.CompletionStatuses.Select(FilterEntity.Create), g => g.CompletionStatusId);
+                    return new SingleValueCollectionGameFieldFilter(field, GetItems(db.CompletionStatuses, true), g => g.CompletionStatusId);
                 case GameFilterField.Source:
-                    return new SingleValueCollectionGameFieldFilter(field, PlayniteAPI.Database.Sources.Select(FilterEntity.Create), g => g.SourceId);
+                    return new SingleValueCollectionGameFieldFilter(field, GetItems(db.Sources, true), g => g.SourceId);
 
                 case GameFilterField.Platform:
-                    return new MultipleValueCollectionGameFieldFilter(field, PlayniteAPI.Database.Platforms.Select(FilterEntity.Create), g => g.PlatformIds);
+                    return new MultipleValueCollectionGameFieldFilter(field, GetItems(db.Platforms, false), g => g.PlatformIds);
                 case GameFilterField.Developer:
-                    return new MultipleValueCollectionGameFieldFilter(field, PlayniteAPI.Database.Companies.Select(FilterEntity.Create), g => g.DeveloperIds);
+                    return new MultipleValueCollectionGameFieldFilter(field, GetItems(db.Companies, false), g => g.DeveloperIds);
                 case GameFilterField.Publisher:
-                    return new MultipleValueCollectionGameFieldFilter(field, PlayniteAPI.Database.Companies.Select(FilterEntity.Create), g => g.PublisherIds);
+                    return new MultipleValueCollectionGameFieldFilter(field, GetItems(db.Companies, false), g => g.PublisherIds);
                 case GameFilterField.Genre:
-                    return new MultipleValueCollectionGameFieldFilter(field, PlayniteAPI.Database.Genres.Select(FilterEntity.Create), g => g.GenreIds);
+                    return new MultipleValueCollectionGameFieldFilter(field, GetItems(db.Genres, false), g => g.GenreIds);
                 case GameFilterField.Category:
-                    return new MultipleValueCollectionGameFieldFilter(field, PlayniteAPI.Database.Categories.Select(FilterEntity.Create), g => g.CategoryIds);
+                    return new MultipleValueCollectionGameFieldFilter(field, GetItems(db.Categories, false), g => g.CategoryIds);
                 case GameFilterField.Tags:
-                    return new MultipleValueCollectionGameFieldFilter(field, PlayniteAPI.Database.Tags.Select(FilterEntity.Create), g => g.TagIds);
+                    return new MultipleValueCollectionGameFieldFilter(field, GetItems(db.Tags, false), g => g.TagIds);
                 case GameFilterField.Features:
-                    return new MultipleValueCollectionGameFieldFilter(field, PlayniteAPI.Database.Features.Select(FilterEntity.Create), g => g.FeatureIds);
+                    return new MultipleValueCollectionGameFieldFilter(field, GetItems(db.Features, false), g => g.FeatureIds);
                 case GameFilterField.Series:
-                    return new MultipleValueCollectionGameFieldFilter(field, PlayniteAPI.Database.Series.Select(FilterEntity.Create), g => g.SeriesIds);
+                    return new MultipleValueCollectionGameFieldFilter(field, GetItems(db.Series, false), g => g.SeriesIds);
                 case GameFilterField.Region:
-                    return new MultipleValueCollectionGameFieldFilter(field, PlayniteAPI.Database.Regions.Select(FilterEntity.Create), g => g.RegionIds);
+                    return new MultipleValueCollectionGameFieldFilter(field, GetItems(db.Regions, false), g => g.RegionIds);
                 case GameFilterField.AgeRating:
-                    return new MultipleValueCollectionGameFieldFilter(field, PlayniteAPI.Database.AgeRatings.Select(FilterEntity.Create), g => g.AgeRatingIds);
-
+                    return new MultipleValueCollectionGameFieldFilter(field, GetItems(db.AgeRatings, false), g => g.AgeRatingIds);
 
                 default: return null;
             }
@@ -103,6 +103,16 @@ namespace Playnite.Filtering
                 default:
                     throw new Exception($"Unknown field: {field}");
             }
+        }
+
+        private static SelectableIdItemList GetItems(IAddons addons)
+        {
+            return new SelectableLibraryPluginList(addons.Plugins.OfType<LibraryPlugin>());
+        }
+
+        private static SelectableDbItemList GetItems(IEnumerable<DatabaseObject> entities, bool includeNoneItem)
+        {
+            return new SelectableDbItemList(entities, includeNoneItem: includeNoneItem);
         }
     }
 

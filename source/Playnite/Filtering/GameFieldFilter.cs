@@ -1,10 +1,6 @@
-﻿using Playnite.Database;
-using Playnite.Plugins;
-using Playnite.SDK;
-using Playnite.SDK.Models;
+﻿using Playnite.SDK.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Playnite.Filtering
 {
@@ -25,9 +21,7 @@ namespace Playnite.Filtering
         private bool positive;
         private bool pinned;
 
-        private GameFilterField field;
-
-        public event EventHandler<FilterChangedEventArgs> Changed;
+        public event EventHandler FilterChanged;
 
         public Func<Game, TField> ValueSelector { get; }
 
@@ -37,7 +31,7 @@ namespace Playnite.Filtering
             ValueSelector = valueSelector;
         }
 
-        protected void CallChanged() => Changed?.Invoke(this, new FilterChangedEventArgs(new List<string> { Field.ToString() }));
+        protected void CallChanged() => FilterChanged?.Invoke(this, new FilterChangedEventArgs(new List<string> { Field.ToString() }));
 
         public bool Positive
         {
@@ -51,7 +45,7 @@ namespace Playnite.Filtering
 
         public bool Pinned { get => pinned; set => SetValue(ref pinned, value); }
 
-        public GameFilterField Field { get => field; set => SetValue(ref field, value); }
+        public GameFilterField Field { get; private set; }
 
         /// <summary>
         /// Match games assuming that the filter is positive (include games that match the criteria instead of excluding them) - flipping the logic will be done in the base class if needed.
@@ -70,12 +64,12 @@ namespace Playnite.Filtering
 
     public abstract class CollectionGameFieldFilter<TField> : GameFieldFilter<TField>
     {
-        public CollectionGameFieldFilter(GameFilterField field, IEnumerable<FilterEntity> entities, Func<Game, TField> valueSelector) : base(field, valueSelector)
+        public CollectionGameFieldFilter(GameFilterField field, SelectableIdItemList items, Func<Game, TField> valueSelector) : base(field, valueSelector)
         {
-            Entities = entities.ToList();
+            Items = items;
+            items.SelectionChanged += (o, ea) => CallChanged();
         }
 
-        public List<FilterEntity> Entities { get; set; }
         public SelectableIdItemList Items { get; set; }
     }
 }

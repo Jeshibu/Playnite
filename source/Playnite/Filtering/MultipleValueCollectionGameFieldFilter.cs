@@ -7,23 +7,28 @@ namespace Playnite.Filtering
 {
     public class MultipleValueCollectionGameFieldFilter : CollectionGameFieldFilter<IEnumerable<Guid>>
     {
-        private string searchText;
         private CollectionFilterMode filterMode;
         private CollectionFilterMode[] availableFilterModes = new CollectionFilterMode[0];
-        public string SearchText { get => searchText; set => SetValue(ref searchText, value); }
-        public CollectionFilterMode FilterMode { get => filterMode; set => SetValue(ref filterMode, value); }
+        public CollectionFilterMode FilterMode
+        {
+            get => filterMode;
+            set
+            {
+                SetValue(ref filterMode, value);
+                CallChanged();
+            }
+        }
         public CollectionFilterMode[] AvailableFilterModes { get => availableFilterModes; set => SetValue(ref availableFilterModes, value); }
 
-        public MultipleValueCollectionGameFieldFilter(GameFilterField field, IEnumerable<FilterEntity> entities, Func<Game, IEnumerable<Guid>> valueSelector, CollectionFilterMode filterMode = CollectionFilterMode.Any)
-            :base(field, entities, valueSelector)
+        public MultipleValueCollectionGameFieldFilter(GameFilterField field, SelectableIdItemList items, Func<Game, IEnumerable<Guid>> valueSelector, CollectionFilterMode filterMode = CollectionFilterMode.Any)
+            : base(field, items, valueSelector)
         {
             FilterMode = filterMode;
-            Items = new SelectableIdItemList<FilterEntity>(entities, x => x.Id);
         }
 
         protected override bool? MatchPositive(Game game)
         {
-            var checkedIds = Entities.Where(e => e.Checked).Select(e => e.Id).ToList();
+            var checkedIds = Items.GetSelectedIds();
             if (checkedIds.Count == 0)
                 return true;
 
