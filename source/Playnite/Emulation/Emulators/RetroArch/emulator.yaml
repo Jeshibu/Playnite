@@ -338,6 +338,13 @@ Profiles:
     ProfileFiles: ['cores\fceumm_libretro.dll']
     StartupExecutable: ^retroarch\.exe$
 
+  - Name: FinalBurn Neo
+    StartupArguments: '-L ".\cores\fbneo_libretro.dll" "{ImagePath}"'
+    Platforms: [arcade]
+    ImageExtensions: [zip,7z]
+    ProfileFiles: ['cores\fbneo_libretro.dll']
+    StartupExecutable: ^RALibretro\.exe\$
+
   - Name: fixGB
     StartupArguments: '-L ".\cores\fixgb_libretro.dll" "{ImagePath}"'
     Platforms: [nintendo_gameboy, nintendo_gameboycolor]
@@ -354,14 +361,14 @@ Profiles:
 
   - Name: Flycast
     StartupArguments: '-L ".\cores\flycast_libretro.dll" "{ImagePath}"'
-    Platforms: [sega_dreamcast]
+    Platforms: [sega_dreamcast, arcade]
     ImageExtensions: [7z, bin, cdi, chd, cue, dat, elf, gdi, lst, m3u, zip]
     ProfileFiles: ['cores\flycast_libretro.dll']
     StartupExecutable: ^retroarch\.exe$
 
   - Name: Flycast GLES2
     StartupArguments: '-L ".\cores\flycast_gles2_libretro.dll" "{ImagePath}"'
-    Platforms: [sega_dreamcast]
+    Platforms: [sega_dreamcast, arcade]
     ImageExtensions: [7z, bin, cdi, chd, cue, dat, elf, gdi, iso, lst, m3u, zip]
     ProfileFiles: ['cores\flycast_gles2_libretro.dll']
     StartupExecutable: ^retroarch\.exe$
@@ -483,6 +490,20 @@ Profiles:
     Platforms: [sega_saturn]
     ImageExtensions: [7z, ccd, chd, cue, iso, m3u, mds, zip]
     ProfileFiles: ['cores\kronos_libretro.dll']
+    StartupExecutable: ^retroarch\.exe$
+
+  - Name: Mame
+    StartupArguments: '-L ".\cores\mame_libretro.dll" "{ImagePath}"'
+    Platforms: [arcade]
+    ImageExtensions: [zip]
+    ProfileFiles: ['cores\mame_libretro.dll']
+    StartupExecutable: ^retroarch\.exe$
+
+  - Name: Mame 2003 Plus
+    StartupArguments: '-L ".\cores\mame2003_plus_libretro.dll" "{ImagePath}"'
+    Platforms: [arcade]
+    ImageExtensions: [zip, cdh]
+    ProfileFiles: ['cores\mame2003_plus_libretro.dll']
     StartupExecutable: ^retroarch\.exe$
 
   - Name: melonDS

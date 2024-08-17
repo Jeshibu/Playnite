@@ -18,6 +18,16 @@
   Id: apple_2
   IgdbId: 75
   Emulators: [bizhawk, mednafen]
+
+- Name: Arcade
+  Id: arcade
+  IgdbId: 52
+  Emulators: [mame, flycast, retroarch]
+
+- Name: Arduboy
+  Id: arduboy
+  IgdbId: "???"
+  Emulators: [ralibretro]
   
 - Name: Atari 2600
   Id: atari_2600
@@ -126,6 +136,10 @@
   IgdbId: 71
   Databases: [Commodore - VIC-20]
   Emulators: [retroarch, winvice]
+
+- Name: Fairchild Channel F
+  Id: fairchild_channelf
+  Emulators: [ralibretro]
   
 - Name: GCE Vectrex
   Id: vectrex
@@ -136,6 +150,10 @@
 - Name: Macintosh
   Id: macintosh
   IgdbId: 14
+
+- Name: Magnavox Odyssey
+  Id: magnavox_odyssey
+  Emulators: [ralibretro]
   
 - Name: Magnavox Odyssey 2
   Id: magnavox_odyssey_2
@@ -148,6 +166,10 @@
   IgdbId: 67
   Databases: [Mattel - Intellivision]
   Emulators: [bizhawk, retroarch]
+
+- Name: Mega Duck
+  Id: megaduck
+  Emulators: [ralibretro]
   
 - Name: Microsoft MSX
   Id: microsoft_msx
@@ -180,6 +202,10 @@
   IgdbId: 11
   Databases: [Microsoft - Xbox]
   Emulators: [cxbx-reloaded, retroarch, xemu]
+
+- Name: NEC PC-88
+  Id: nec_pc88
+  Emulators: [ralibretro]
   
 - Name: NEC PC-98
   Id: nec_pc98
@@ -246,6 +272,10 @@
   IgdbId: 51
   Databases: [Nintendo - Family Computer Disk System]
   Emulators: [fceux, retroarch]
+
+- Name: Nintendo Game & Watch
+  Id: nintendo_gameandwatch
+  Emulators: [ralibretro]
   
 - Name: Nintendo Game Boy Advance
   Id: nintendo_gameboyadvance
@@ -270,6 +300,10 @@
   IgdbId: 21
   Databases: [Nintendo - GameCube]
   Emulators: [dolphin, retroarch]
+
+- Name: Nintendo Pokémon Mini
+  Id: nintendo_pokemonmini
+  Emulators: [ralibretro]
   
 - Name: Nintendo SNES
   Id: nintendo_super_nes
@@ -280,7 +314,7 @@
 - Name: Nintendo Switch
   Id: nintendo_switch
   IgdbId: 130
-  Emulators: [ryujinx, yuzu, suyu, sudachi]
+  Emulators: [ryujinx, suyu, sudachi]
   
 - Name: Nintendo Virtual Boy
   Id: nintendo_virtualboy
@@ -362,12 +396,16 @@
   IgdbId: 84
   Databases: [Sega - SG-1000]
   Emulators: [ares, retroarch]
+
+- Name: Sharp X1
+  Id: sharp_x1
+  Emulators: [ralibretro]
   
 - Name: Sharp X68000
   Id: sharp_x68000
   IgdbId: 121
   Databases: [Sharp - X68000]
-  Emulators: [retroarch]
+  Emulators: [retroarch, ralibretro]
   
 - Name: Sinclair ZX Spectrum +3
   Id: sinclair_zxspectrum3
@@ -471,6 +509,10 @@
   Id: uzebox
   Databases: [Uzebox]
   Emulators: [bizhawk]
+
+- Name: WASM-4
+  Id: wasm4
+  Emulators: [relibretro]
 
 - Name: Watara Supervision
   Id: watara_supervision
