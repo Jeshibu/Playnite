@@ -19,11 +19,6 @@
   IgdbId: 75
   Emulators: [bizhawk, mednafen]
 
-- Name: Arcade
-  Id: arcade
-  IgdbId: 52
-  Emulators: [mame, flycast, retroarch]
-
 - Name: Arduboy
   Id: arduboy
   IgdbId: "???"

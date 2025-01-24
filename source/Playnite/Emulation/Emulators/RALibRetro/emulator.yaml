@@ -212,32 +212,11 @@ Profiles:
     ProfileFiles: ['cores\duckstation_libretro.dll']
     StartupExecutable: ^RALibretro\.exe\$
 
-  - Name: FB Alpha
-    StartupArguments: '--core fbalpha_libretro --system 27 --game "{ImagePath}"'
-    Platforms: [arcade]
-    ImageExtensions: [zip]
-    ProfileFiles: ['cores\fbalpha_libretro.dll']
-    StartupExecutable: ^RALibretro\.exe\$
-
-  - Name: FinalBurn Neo
-    StartupArguments: '--core fbneo_libretro --system 27 --game "{ImagePath}"'
-    Platforms: [arcade]
-    ImageExtensions: [zip, 7z]
-    ProfileFiles: ['cores\fbneo_libretro.dll']
-    StartupExecutable: ^RALibretro\.exe\$
-
   - Name: FCEUmm
     StartupArguments: '--core fceumm_libretro --system 7 --game "{ImagePath}"'
     Platforms: [nintendo_nes]
     ImageExtensions: [7z, fds, nes, unf, unif, zip]
     ProfileFiles: ['cores\fceumm_libretro.dll']
-    StartupExecutable: ^RALibretro\.exe\$
-
-  - Name: Flycast
-    StartupArguments: '--core flycast_libretro --system 27 --game "{ImagePath}"'
-    Platforms: [arcade]
-    ImageExtensions: [zip, 7z]
-    ProfileFiles: ['cores\flycast_libretro.dll']
     StartupExecutable: ^RALibretro\.exe\$
 
   - Name: Flycast
@@ -401,13 +380,6 @@ Profiles:
     ProfileFiles: ['cores\hatari_libretro.dll']
     StartupExecutable: ^RALibretro\.exe\$
 
-  - Name: HBMAME
-    StartupArguments: '--core hbmame_libretro --system 27 --game "{ImagePath}"'
-    Platforms: [arcade]
-    ImageExtensions: []
-    ProfileFiles: ['cores\hbmame_libretro.dll']
-    StartupExecutable: ^RALibretro\.exe\$
-
   - Name: Higan Accuracy
     StartupArguments: '--core higan_sfc_libretro --system 3 --game "{ImagePath}"'
     Platforms: [nintendo_super_nes]
@@ -462,48 +434,6 @@ Profiles:
     Platforms: [nintendo_wii]
     ImageExtensions: [7z, ciso, dff, dol, elf, gcm, gcz, iso, tgc, wad, wbfs, zip]
     ProfileFiles: ['cores\ishiiruka_libretro.dll']
-    StartupExecutable: ^RALibretro\.exe\$
-
-  - Name: MAME 2003
-    StartupArguments: '--core mame2003_libretro --system 27 --game "{ImagePath}"'
-    Platforms: [arcade]
-    ImageExtensions: [zip]
-    ProfileFiles: ['cores\mame2003_libretro.dll']
-    StartupExecutable: ^RALibretro\.exe\$
-
-  - Name: MAME 2003 Plus
-    StartupArguments: '--core mame2003_plus_libretro --system 27 --game "{ImagePath}"'
-    Platforms: [arcade]
-    ImageExtensions: [zip, chd]
-    ProfileFiles: ['cores\mame2003_plus_libretro.dll']
-    StartupExecutable: ^RALibretro\.exe\$
-
-  - Name: MAME 2010
-    StartupArguments: '--core mame2010_libretro --system 27 --game "{ImagePath}"'
-    Platforms: [arcade]
-    ImageExtensions: [zip, 7z, chd]
-    ProfileFiles: ['cores\mame2010_libretro.dll']
-    StartupExecutable: ^RALibretro\.exe\$
-
-  - Name: MAME 2015
-    StartupArguments: '--core mame2015_libretro --system 27 --game "{ImagePath}"'
-    Platforms: [arcade]
-    ImageExtensions: [zip]
-    ProfileFiles: ['cores\mame2015_libretro.dll']
-    StartupExecutable: ^RALibretro\.exe\$
-
-  - Name: MAME 2016
-    StartupArguments: '--core mame2016_libretro --system 27 --game "{ImagePath}"'
-    Platforms: [arcade]
-    ImageExtensions: [zip]
-    ProfileFiles: ['cores\mame2016_libretro.dll']
-    StartupExecutable: ^RALibretro\.exe\$
-
-  - Name: MAME
-    StartupArguments: '--core mame_libretro --system 27 --game "{ImagePath}"'
-    Platforms: [arcade]
-    ImageExtensions: [zip]
-    ProfileFiles: ['cores\mame_libretro.dll']
     StartupExecutable: ^RALibretro\.exe\$
 
   - Name: Beetle GBA
@@ -1001,13 +931,6 @@ Profiles:
     Platforms: [tic_80]
     ImageExtensions: []
     ProfileFiles: ['cores\tic80_libretro.dll']
-    StartupExecutable: ^RALibretro\.exe\$
-
-  - Name: UME 2015
-    StartupArguments: '--core ume2015_libretro --system 27 --game "{ImagePath}"'
-    Platforms: [arcade]
-    ImageExtensions: []
-    ProfileFiles: ['cores\ume2015_libretro.dll']
     StartupExecutable: ^RALibretro\.exe\$
 
   - Name: Uzem
