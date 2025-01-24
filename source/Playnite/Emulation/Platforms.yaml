@@ -21,7 +21,6 @@
 
 - Name: Arduboy
   Id: arduboy
-  IgdbId: "???"
   Emulators: [ralibretro]
   
 - Name: Atari 2600
@@ -309,7 +308,7 @@
 - Name: Nintendo Switch
   Id: nintendo_switch
   IgdbId: 130
-  Emulators: [ryujinx]
+  Emulators: [ryujinx,yuzu]
   
 - Name: Nintendo Virtual Boy
   Id: nintendo_virtualboy
@@ -507,7 +506,7 @@
 
 - Name: WASM-4
   Id: wasm4
-  Emulators: [relibretro]
+  Emulators: [ralibretro]
 
 - Name: Watara Supervision
   Id: watara_supervision
