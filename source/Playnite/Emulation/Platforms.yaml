@@ -144,10 +144,6 @@
 - Name: Macintosh
   Id: macintosh
   IgdbId: 14
-
-- Name: Magnavox Odyssey
-  Id: magnavox_odyssey
-  Emulators: [ralibretro]
   
 - Name: Magnavox Odyssey 2
   Id: magnavox_odyssey_2

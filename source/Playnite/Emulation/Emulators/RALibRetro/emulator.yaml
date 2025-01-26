@@ -12,7 +12,7 @@ Profiles:
   - Name: Arduous
     StartupArguments: '--core arduous_libretro --system 71 --game "{ImagePath}"'
     Platforms: [arduboy]
-    ImageExtensions: []
+    ImageExtensions: [hex, arduboy]
     ProfileFiles: ['cores\arduous_libretro.dll']
     StartupExecutable: ^RALibretro\.exe\$
 
@@ -236,7 +236,7 @@ Profiles:
   - Name: FreeChaF
     StartupArguments: '--core freechaf_libretro --system 57 --game "{ImagePath}"'
     Platforms: [fairchild_channelf]
-    ImageExtensions: []
+    ImageExtensions: [bin]
     ProfileFiles: ['cores\freechaf_libretro.dll']
     StartupExecutable: ^RALibretro\.exe\$
 
@@ -355,7 +355,7 @@ Profiles:
   - Name: GW
     StartupArguments: '--core gw_libretro --system 60 --game "{ImagePath}"'
     Platforms: [nintendo_gameandwatch]
-    ImageExtensions: []
+    ImageExtensions: [mgw]
     ProfileFiles: ['cores\gw_libretro.dll']
     StartupExecutable: ^RALibretro\.exe\$
 
@@ -662,8 +662,8 @@ Profiles:
 
   - Name: O2EM
     StartupArguments: '--core o2em_libretro --system 23 --game "{ImagePath}"'
-    Platforms: [magnavox_odyssey]
-    ImageExtensions: []
+    Platforms: [magnavox_odyssey_2]
+    ImageExtensions: [bin]
     ProfileFiles: ['cores\o2em_libretro.dll']
     StartupExecutable: ^RALibretro\.exe\$
 
@@ -733,7 +733,7 @@ Profiles:
   - Name: Play!
     StartupArguments: '--core play_libretro --system 21 --game "{ImagePath}"'
     Platforms: [sony_playstation2]
-    ImageExtensions: []
+    ImageExtensions: [chd, cso, cue, elf, iso, isz]
     ProfileFiles: ['cores\play_libretro.dll']
     StartupExecutable: ^RALibretro\.exe\$
 
@@ -782,7 +782,7 @@ Profiles:
   - Name: QUASI88
     StartupArguments: '--core quasi88_libretro --system 47 --game "{ImagePath}"'
     Platforms: [nec_pc88]
-    ImageExtensions: []
+    ImageExtensions: [d88, u88, m3u]
     ProfileFiles: ['cores\quasi88_libretro.dll']
     StartupExecutable: ^RALibretro\.exe\$
 
@@ -817,7 +817,7 @@ Profiles:
   - Name: SameDuck
     StartupArguments: '--core sameduck_libretro --system 69 --game "{ImagePath}"'
     Platforms: [megaduck]
-    ImageExtensions: []
+    ImageExtensions: [bin]
     ProfileFiles: ['cores\sameduck_libretro.dll']
     StartupExecutable: ^RALibretro\.exe\$
 
@@ -929,14 +929,14 @@ Profiles:
   - Name: TIC-80
     StartupArguments: '--core tic80_libretro --system 65 --game "{ImagePath}"'
     Platforms: [tic_80]
-    ImageExtensions: []
+    ImageExtensions: [tic]
     ProfileFiles: ['cores\tic80_libretro.dll']
     StartupExecutable: ^RALibretro\.exe\$
 
   - Name: Uzem
     StartupArguments: '--core uzem_libretro --system 80 --game "{ImagePath}"'
     Platforms: [uzebox]
-    ImageExtensions: []
+    ImageExtensions: [uze]
     ProfileFiles: ['cores\uzem_libretro.dll']
     StartupExecutable: ^RALibretro\.exe\$
 
@@ -1048,7 +1048,7 @@ Profiles:
   - Name: WASM-4
     StartupArguments: '--core wasm4_libretro --system 72 --game "{ImagePath}"'
     Platforms: [wasm4]
-    ImageExtensions: []
+    ImageExtensions: [wasm]
     ProfileFiles: ['cores\wasm4_libretro.dll']
     StartupExecutable: ^RALibretro\.exe\$
 
